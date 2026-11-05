@@ -1,0 +1,1342 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio 2027 | Hello Kitty</title>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --pink: #ff8fb8;
+  --pink-dark: #e85d91;
+  --pink-light: #fff0f6;
+  --red: #e94b70;
+  --white: #ffffff;
+  --text: #714657;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #fff5f8;
+  color: var(--text);
+}
+
+/* HEADER */
+
+header {
+  background: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffe0eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  color: var(--pink-dark);
+}
+
+.logo span {
+  color: #ff9dbd;
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--pink-dark);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.login-button {
+  background: var(--pink);
+  color: white;
+  border: none;
+  padding: 10px 17px;
+  border-radius: 20px;
+  font-weight: 900;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 490px;
+  padding: 75px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  background:
+    radial-gradient(circle at 85% 20%, #ffd5e5 0 7%, transparent 7.5%),
+    radial-gradient(circle at 90% 85%, #ffe1ed 0 9%, transparent 9.5%),
+    linear-gradient(135deg, #ffe5ef, #fff6f9, #ffd5e5);
+}
+
+.hero-text {
+  max-width: 570px;
+}
+
+.eyebrow {
+  color: var(--red);
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.05;
+  margin: 17px 0;
+  color: #d94f84;
+}
+
+.hero h1 span {
+  color: #ff91b6;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.main-button {
+  background: var(--red);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 900;
+  display: inline-block;
+  box-shadow: 0 5px 15px #e94b7035;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-decoration {
+  width: 280px;
+  height: 280px;
+  min-width: 220px;
+  border-radius: 50%;
+  background: #fff;
+  border: 12px solid #ffc0d7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 115px;
+  box-shadow: 0 15px 40px #e88eae35;
+  position: relative;
+}
+
+.hero-decoration::before {
+  content: "🎀";
+  position: absolute;
+  top: -38px;
+  right: -20px;
+  font-size: 65px;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 65px 8%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 34px;
+  color: #d94f84;
+}
+
+.section-title p {
+  margin-top: 8px;
+  color: #a77b8c;
+}
+
+/* ABOUT */
+
+
+/* ABOUT - HELLO KITTY */
+
+.about-section {
+  background: linear-gradient(180deg, #fff5f9, #ffe8f1);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.about-header .little-text {
+  color: #e77da3;
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.about-header h2 {
+  font-size: 38px;
+  color: #d94f84;
+  margin: 12px 0;
+}
+
+.about-header p {
+  color: #a77b8c;
+}
+
+.about-main {
+  background: white;
+  border: 2px solid #ffd5e5;
+  border-radius: 30px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  gap: 35px;
+  box-shadow: 0 15px 40px #e88eae20;
+  position: relative;
+}
+
+.about-avatar {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#ffd5e5,#fff0f6);
+  border: 7px solid #ffe2ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 85px;
+  margin: auto;
+}
+
+.about-main h3 {
+  font-size: 27px;
+  color: #d94f84;
+  margin-bottom: 14px;
+}
+
+.about-main p {
+  font-size: 15px;
+  line-height: 2;
+  color: #805b6b;
+}
+
+.about-signature {
+  color: #e77da3;
+  font-weight: 900;
+  margin-top: 15px;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.about-feature {
+  background: white;
+  border: 1px solid #ffd8e6;
+  border-radius: 20px;
+  padding: 25px 15px;
+  text-align: center;
+  transition: .3s;
+}
+
+.about-feature:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px #e88eae25;
+}
+
+.about-feature .feature-icon {
+  font-size: 32px;
+}
+
+.about-feature h4 {
+  color: #d94f84;
+  margin: 10px 0;
+}
+
+.about-feature p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #a77b8c;
+}
+
+@media(max-width:700px) {
+  .about-main {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .about-header h2 {
+    font-size: 29px;
+  }
+}
+
+
+/* ADMIN */
+
+.admin-section {
+  display: none;
+  background: white;
+}
+
+.admin-box {
+  max-width: 650px;
+  margin: auto;
+  padding: 30px;
+  background: #fff5f8;
+  border: 2px solid #ffd6e5;
+  border-radius: 25px;
+}
+
+.admin-box input,
+.admin-box textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0 16px;
+  border: 1px solid #f4bfd2;
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  background: white;
+  color: var(--text);
+}
+
+.admin-box input:focus,
+.admin-box textarea:focus {
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px #ffb5d033;
+}
+
+.admin-box label {
+  font-weight: 900;
+  color: #bd527b;
+}
+
+.add-button {
+  width: 100%;
+  border: none;
+  background: var(--red);
+  color: white;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.logout-button {
+  background: #ffe1eb;
+  color: #b83e6d;
+  border: none;
+  border-radius: 15px;
+  padding: 9px 15px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* LOGIN */
+
+#login-area {
+  display: none;
+  padding: 35px 8%;
+  background: #fff0f6;
+}
+
+.login-box {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 28px;
+  border-radius: 22px;
+  border: 2px solid #ffd6e5;
+}
+
+.login-box h2 {
+  color: #d94f84;
+  margin-bottom: 18px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #f4bfd2;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+.status {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  border: 2px dashed #ffc1d7;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  background: #f9c5d9;
+  padding: 30px 15px;
+  color: #9a4668;
+  font-weight: 800;
+}
+
+@media(max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 13px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 7%;
+  }
+
+  .hero-decoration {
+    width: 220px;
+    height: 220px;
+    font-size: 85px;
+  }
+
+  section {
+    padding: 48px 6%;
+  }
+}
+
+
+/* ===== MY PROJECTS - HELLO KITTY ===== */
+
+.projects-section {
+  background: #fff5f8;
+  padding: 75px 8%;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  gap: 20px;
+}
+
+.projects-header h2 {
+  color: #d94f84;
+  font-size: 36px;
+  margin-top: 8px;
+}
+
+.projects-header p {
+  color: #a77b8c;
+  margin-top: 8px;
+}
+
+.projects-label {
+  color: #e77da3;
+  letter-spacing: 4px;
+  font-weight: 900;
+  font-size: 11px;
+}
+
+.projects-decoration {
+  font-size: 65px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid #ffd9e7;
+  border-radius: 23px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s ease;
+  box-shadow: 0 8px 25px #d94f8410;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px #d94f8425;
+  border-color: #f39cba;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.project-number {
+  color: #d94f84;
+  background: #ffeaf2;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.project-icon {
+  font-size: 35px;
+  background: #fff0f6;
+  width: 65px;
+  height: 65px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.project-subject {
+  color: #e77da3;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  margin-bottom: 9px;
+}
+
+.project-card h3 {
+  color: #c84979;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  color: #987586;
+  font-size: 13px;
+  line-height: 1.8;
+  min-height: 48px;
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid #ffe5ee;
+}
+
+.project-link {
+  background: #ffe8f0;
+  color: #ca4f80;
+  padding: 10px 15px;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.project-link:hover {
+  background: #f48eb4;
+  color: white;
+}
+
+.project-date {
+  font-size: 11px;
+  color: #b991a2;
+}
+
+.projects-bottom {
+  margin-top: 35px;
+  padding: 30px;
+  background: linear-gradient(120deg,#ffe3ed,#fff0f6);
+  border: 1px solid #ffd2e2;
+  border-radius: 23px;
+  text-align: center;
+}
+
+.projects-bottom h3 {
+  color: #d94f84;
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.projects-bottom p {
+  color: #a77b8c;
+  font-size: 13px;
+}
+
+@media(max-width:900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width:600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-header h2 {
+    font-size: 28px;
+  }
+
+  .projects-decoration {
+    font-size: 40px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎀 My Portfolio <span>2027</span></div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#trabalhos">Trabalhos</a>
+    <button class="login-button" onclick="toggleLogin()">
+      Área da estudante
+    </button>
+  </nav>
+</header>
+
+<!-- INÍCIO -->
+
+<div class="hero" id="inicio">
+  <div class="hero-text">
+    <div class="eyebrow">WELCOME TO MY WORLD ♡</div>
+
+    <h1>My little <span>Portfolio</span></h1>
+
+    <p>
+      Um novo ano, novos sonhos e muitas conquistas!
+      Aqui você encontrará meus trabalhos, projetos,
+      atividades e tudo o que vou aprender durante 2027.
+    </p>
+
+    <a href="#trabalhos" class="main-button">
+      Conheça meus trabalhos ♡
+    </a>
+  </div>
+
+  <div class="hero-decoration">
+    🎀
+  </div>
+</div>
+
+<!-- SOBRE MEU PORTFOLIO -->
+
+<section class="about-section" id="sobre">
+
+  <div class="about-container">
+
+    <div class="about-header">
+
+      <div class="little-text">
+        ✧ WELCOME TO MY LITTLE WORLD ✧
+      </div>
+
+      <h2>Sobre meu portfólio 🎀</h2>
+
+      <p>Um espaço especial para registrar minha jornada!</p>
+
+    </div>
+
+    <div class="about-main">
+
+      <div class="about-avatar">
+        🎀
+      </div>
+
+      <div>
+
+        <h3>Olá, seja bem-vindo(a)! ♡</h3>
+
+        <p>
+          Este é o meu portfólio digital de 2027,
+          criado para compartilhar minhas experiências,
+          atividades, pesquisas e projetos desenvolvidos
+          durante minha jornada escolar.
+        </p>
+
+        <p>
+          Aqui cada trabalho representa uma nova descoberta,
+          cada projeto é uma oportunidade de desenvolver
+          minhas habilidades e cada conquista faz parte
+          da minha evolução como estudante.
+        </p>
+
+        <p>
+          Este espaço será atualizado ao longo do ano,
+          reunindo tudo aquilo que estou aprendendo,
+          criando e construindo.
+        </p>
+
+        <div class="about-signature">
+          Com carinho, minha jornada de 2027 ♡
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="about-features">
+
+      <div class="about-feature">
+        <div class="feature-icon">📚</div>
+        <h4>Aprendizagem</h4>
+        <p>
+          Novos conhecimentos, pesquisas
+          e descobertas.
+        </p>
+      </div>
+
+      <div class="about-feature">
+        <div class="feature-icon">🎨</div>
+        <h4>Criatividade</h4>
+        <p>
+          Ideias, projetos e atividades
+          desenvolvidas por mim.
+        </p>
+      </div>
+
+      <div class="about-feature">
+        <div class="feature-icon">🌷</div>
+        <h4>Conquistas</h4>
+        <p>
+          Minha evolução e todos os
+          resultados alcançados.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ===== MEUS PROJETOS ===== -->
+
+<section class="projects-section" id="trabalhos">
+
+  <div class="projects-header">
+
+    <div>
+      <div class="projects-label">
+        MY CREATIVE SPACE · 2027
+      </div>
+
+      <h2>Meus projetos ♡</h2>
+
+      <p>
+        Um cantinho especial para meus trabalhos,
+        ideias e descobertas.
+      </p>
+    </div>
+
+    <div class="projects-decoration">🎀</div>
+
+  </div>
+
+  <div class="projects-grid" id="projects-grid">
+
+    <!-- PROJETO 01 -->
+
+    <article class="project-card">
+
+      <div class="project-top">
+        <span class="project-number">PROJECT 01</span>
+        <span>♡</span>
+      </div>
+
+      <div class="project-icon">📚</div>
+
+      <div class="project-subject">HISTÓRIA</div>
+
+      <h3>Nome do projeto</h3>
+
+      <p class="project-description">
+        Descrição do trabalho e principais
+        atividades desenvolvidas.
+      </p>
+
+      <div class="project-footer">
+
+        <span class="project-date">2027</span>
+
+        <a class="project-link"
+           href="COLE_SEU_LINK_AQUI"
+           target="_blank"
+           rel="noopener noreferrer">
+          ABRIR PROJETO ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- PROJETO 02 -->
+
+    <article class="project-card">
+
+      <div class="project-top">
+        <span class="project-number">PROJECT 02</span>
+        <span>♡</span>
+      </div>
+
+      <div class="project-icon">💻</div>
+
+      <div class="project-subject">
+        DESENVOLVIMENTO DE SISTEMAS
+      </div>
+
+      <h3>Nome do projeto</h3>
+
+      <p class="project-description">
+        Espaço para apresentar meus projetos
+        de programação e tecnologia.
+      </p>
+
+      <div class="project-footer">
+
+        <span class="project-date">2027</span>
+
+        <a class="project-link"
+           href="COLE_SEU_LINK_AQUI"
+           target="_blank"
+           rel="noopener noreferrer">
+          ABRIR PROJETO ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- PROJETO 03 -->
+
+    <article class="project-card">
+
+      <div class="project-top">
+        <span class="project-number">PROJECT 03</span>
+        <span>♡</span>
+      </div>
+
+      <div class="project-icon">🌷</div>
+
+      <div class="project-subject">PORTUGUÊS</div>
+
+      <h3>Nome do projeto</h3>
+
+      <p class="project-description">
+        Trabalhos, redações, pesquisas
+        e atividades de português.
+      </p>
+
+      <div class="project-footer">
+
+        <span class="project-date">2027</span>
+
+        <a class="project-link"
+           href="COLE_SEU_LINK_AQUI"
+           target="_blank"
+           rel="noopener noreferrer">
+          ABRIR PROJETO ↗
+        </a>
+
+      </div>
+
+    </article>
+
+    <!--
+      PARA ADICIONAR MAIS:
+      COPIE UM article.project-card INTEIRO
+      E TROQUE O NÚMERO, ÍCONE, MATÉRIA,
+      TÍTULO, DESCRIÇÃO E LINK.
+    -->
+
+  </div>
+
+  <div class="projects-bottom">
+
+    <h3>🎀 My journey is just beginning!</h3>
+
+    <p>
+      Novos projetos serão adicionados
+      ao longo de 2027. ♡
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- LOGIN -->
+
+<div id="login-area">
+  <div class="login-box">
+    <h2>🎀 Área da estudante</h2>
+    <p style="margin-bottom:15px;font-size:14px">
+      Entre para adicionar seus trabalhos.
+    </p>
+
+    <form id="login-form">
+      <input
+        type="email"
+        id="email"
+        placeholder="Seu e-mail"
+        required
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Sua senha"
+        required
+      >
+
+      <button class="add-button" type="submit">
+        Entrar ♡
+      </button>
+    </form>
+
+    <p class="status" id="login-status"></p>
+  </div>
+</div>
+
+<!-- PAINEL ADMINISTRATIVO -->
+
+<section class="admin-section" id="admin">
+
+  <div class="section-title">
+    <h2>♡ Painel da estudante ♡</h2>
+    <p>Adicione seus novos trabalhos aqui!</p>
+  </div>
+
+  <div class="admin-box">
+
+    <button class="logout-button" onclick="logout()">
+      Sair da conta
+    </button>
+
+    <form id="work-form">
+
+      <label>Título do trabalho</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Ex: Trabalho de História"
+        required
+      >
+
+      <label>Matéria</label>
+      <input
+        type="text"
+        id="subject"
+        placeholder="Ex: História, Português, Matemática..."
+        required
+      >
+
+      <label>Descrição</label>
+      <textarea
+        id="description"
+        rows="3"
+        placeholder="Escreva uma pequena descrição..."
+      ></textarea>
+
+      <label>Link do trabalho</label>
+      <input
+        type="url"
+        id="url"
+        placeholder="https://..."
+        required
+      >
+
+      <button type="submit" class="add-button">
+        + Adicionar trabalho
+      </button>
+
+      <p class="status" id="work-status"></p>
+
+    </form>
+  </div>
+</section>
+
+<footer>
+  🎀 My Portfolio 2027 · Hello Kitty Edition 🎀
+  <br>
+  Feito com carinho ♡
+</footer>
+
+<script>
+// ======================================
+// 1. CONFIGURAÇÃO DO SUPABASE
+// ======================================
+
+const SUPABASE_URL = "COLE_AQUI_SUA_PROJECT_URL";
+const SUPABASE_ANON_KEY = "COLE_AQUI_SUA_ANON_PUBLIC_KEY";
+
+const client = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+// ======================================
+// 2. ELEMENTOS DA PÁGINA
+// ======================================
+
+const loginArea = document.getElementById("login-area");
+const adminArea = document.getElementById("admin");
+const worksGrid = document.getElementById("works-grid");
+
+let currentUser = null;
+
+// ======================================
+// 3. ABRIR E FECHAR LOGIN
+// ======================================
+
+function toggleLogin() {
+  if (currentUser) {
+    adminArea.style.display = "block";
+    adminArea.scrollIntoView({behavior:"smooth"});
+    return;
+  }
+
+  loginArea.style.display =
+    loginArea.style.display === "block" ? "none" : "block";
+
+  loginArea.scrollIntoView({behavior:"smooth"});
+}
+
+// ======================================
+// 4. LOGIN
+// ======================================
+
+document.getElementById("login-form").addEventListener(
+  "submit", async function(e) {
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const status = document.getElementById("login-status");
+
+    status.textContent = "Entrando...";
+
+    const {data, error} = await client.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      status.textContent = "E-mail ou senha incorretos.";
+      return;
+    }
+
+    currentUser = data.user;
+
+    loginArea.style.display = "none";
+    adminArea.style.display = "block";
+
+    document.getElementById("login-form").reset();
+
+    await loadWorks();
+
+    adminArea.scrollIntoView({behavior:"smooth"});
+});
+
+// ======================================
+// 5. VERIFICAR SESSÃO
+// ======================================
+
+async function checkSession() {
+
+  const {data} = await client.auth.getSession();
+
+  currentUser = data.session?.user || null;
+
+  adminArea.style.display = currentUser ? "block" : "none";
+
+}
+
+client.auth.onAuthStateChange((_event, session) => {
+
+  currentUser = session?.user || null;
+  adminArea.style.display = currentUser ? "block" : "none";
+
+});
+
+// ======================================
+// 6. SAIR DA CONTA
+// ======================================
+
+async function logout() {
+
+  await client.auth.signOut();
+
+  currentUser = null;
+  adminArea.style.display = "none";
+
+  alert("Você saiu da sua conta!");
+
+}
+
+// ======================================
+// 7. CARREGAR TRABALHOS
+// ======================================
+
+async function loadWorks() {
+
+  worksGrid.innerHTML =
+    '<div class="empty">Carregando... ♡</div>';
+
+  const {data, error} = await client
+    .from("portfolio_works")
+    .select("*")
+    .order("created_at", {ascending:false});
+
+  if (error) {
+    worksGrid.textContent =
+      "Não foi possível carregar os trabalhos.";
+    console.error(error);
+    return;
+  }
+
+  worksGrid.innerHTML = "";
+
+  if (!data || data.length === 0) {
+    worksGrid.innerHTML = `
+      <div class="empty">
+        🎀 Ainda não existem trabalhos publicados.
+        <br><br>
+        Volte em breve para conferir as novidades!
+      </div>`;
+    return;
+  }
+
+  data.forEach(work => {
+
+    const card = document.createElement("article");
+    card.className = "work-card";
+
+    const icon = document.createElement("div");
+    icon.className = "work-icon";
+    icon.textContent = "🎀";
+
+    const title = document.createElement("h3");
+    title.textContent = work.title;
+
+    const subject = document.createElement("p");
+    subject.textContent = "Matéria: " + work.subject;
+
+    const description = document.createElement("p");
+    description.textContent = work.description || "";
+
+    const link = document.createElement("a");
+    link.href = work.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Visualizar trabalho ♡";
+
+    const date = document.createElement("small");
+    date.textContent = new Date(work.created_at)
+      .toLocaleDateString("pt-BR");
+
+    card.append(icon, title, subject, description, link, date);
+
+    if (currentUser && currentUser.id === work.user_id) {
+
+      const remove = document.createElement("button");
+      remove.className = "delete-button";
+      remove.textContent = "Excluir";
+
+      remove.addEventListener("click", () => deleteWork(work.id));
+
+      card.appendChild(remove);
+    }
+
+    worksGrid.appendChild(card);
+
+  });
+
+}
+
+// ======================================
+// 8. ADICIONAR TRABALHO
+// ======================================
+
+document.getElementById("work-form").addEventListener(
+  "submit", async function(e) {
+
+    e.preventDefault();
+
+    if (!currentUser) {
+      alert("Faça login primeiro!");
+      return;
+    }
+
+    const status = document.getElementById("work-status");
+    const title = document.getElementById("title").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const description =
+      document.getElementById("description").value.trim();
+    const url = document.getElementById("url").value.trim();
+
+    let parsedURL;
+
+    try {
+      parsedURL = new URL(url);
+    } catch {
+      status.textContent = "Digite um link válido.";
+      return;
+    }
+
+    if (!["http:", "https:"].includes(parsedURL.protocol)) {
+      status.textContent = "O link precisa começar com https:// ou http://";
+      return;
+    }
+
+    status.textContent = "Salvando trabalho...";
+
+    const {error} = await client
+      .from("portfolio_works")
+      .insert([{
+        title,
+        subject,
+        description,
+        url,
+        user_id: currentUser.id
+      }]);
+
+    if (error) {
+      status.textContent = "Erro ao salvar. Verifique o Supabase.";
+      console.error(error);
+      return;
+    }
+
+    document.getElementById("work-form").reset();
+
+    status.textContent = "Trabalho adicionado com sucesso! 🎀";
+
+    await loadWorks();
+
+  }
+);
+
+// ======================================
+// 9. EXCLUIR TRABALHO
+// ======================================
+
+async function deleteWork(id) {
+
+  if (!currentUser) return;
+
+  if (!confirm("Deseja excluir este trabalho?")) return;
+
+  const {error} = await client
+    .from("portfolio_works")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("Não foi possível excluir.");
+    return;
+  }
+
+  await loadWorks();
+
+}
+
+// ======================================
+// 10. INICIAR SITE
+// ======================================
+
+async function init() {
+
+  await checkSession();
+  await loadWorks();
+
+}
+
+init();
+
+</script>
+
+</body>
+</html>
